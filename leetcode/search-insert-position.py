@@ -21,4 +21,4 @@ class Solution:
         if target in nums:
             return nums.index(target)
         else: #this part does the binary sort algorithm
-            position = bisect.bisect_left(nums, target)
+            return bisect.bisect_left(nums, target)
