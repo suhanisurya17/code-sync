@@ -10,8 +10,12 @@ def checkPassword(password):
     #composed of only alphabetical characters
     
     #first I must turn the string into an array
-    
-    word = password.split()
+    words = []
+    words = password.split()
+    if len(words) >= 5:
+        for word in words:
+            if len(word) >= 3
+        
     
     
     #category 2
