@@ -22,11 +22,3 @@ class Solution:
             return nums.index(target)
         else: #this part does the binary sort algorithm
             position = bisect.bisect_left(nums, target)
-            if position == 0:
-                return 0
-            elif position == len(nums)
-                return len(nums)
-        else:
-            before = nums[position - 1]
-            after = nums[position]
-            return before if abs(before - position) < abs(after - position) else after
