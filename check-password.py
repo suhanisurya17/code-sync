@@ -10,13 +10,24 @@ def checkPassword(password):
     #composed of only alphabetical characters
     
     #first I must turn the string into an array
+
+
+    #step 1, make a list
     words = []
     words = password.split()
+
     if len(words) >= 5:
+        valid = True
+        unique_words = set()
+
         for word in words:
-            if len(word) >= 3
-        
-    
+            if len(word) <= 3 or not word.isalpha():
+                valid = False
+            
+        if len(words) == len(unique_words) and valid:
+            valid = True
+
+        return valid
     
     #category 2
     #at least 12 char long
