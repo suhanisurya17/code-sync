@@ -1,0 +1,61 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        #first step is counting frequencies
+        freq = defaultdict(int)
+        for num in nums:
+            freq[num] += 1
+
+        #the second step is to create each bucket
+        #the index is the frequency, and the value is the list of numbers
+        #eg {3: [7, 7, 7]}
+
+        #creating a list of buckets
+        buckets = []
+
+        #creating a counter
+        total = len(nums)
+        #iterating through the length of nums and adding one because max frequency is the length and min frequency is 0
+        #creating n + 1 empty lists
+        for i in range (total + 1):
+            buckets.append([])
+            
+        # buckets = [[], [], [], [], [], [], []]
+
+        #so this is going through each frequency in freq
+
+        #ex: {2:3, 3:2, 1:4}
+        #so there are 2 threes, 3 twos and 1 four
+        
+
+        #now we want to iterate through freq to add the corresponding number that matches the frequency to the new buckets
+        #i am assuming f is key and num is the value
+        
+        for number, f in freq.items():
+            buckets[f].append(number)
+
+        #the last step is to create a new list to store the elements
+
+
+        result = []
+
+        #useful syntax:
+        #essentially this is starting at the highest frequency and going down
+        #                 start        stop step
+        for i in range(len(buckets) - 1, -1, -1):
+
+            #iterating through each bucket and adding the num to the new results list
+            for num in buckets[i]:
+                result.append(num)
+                #when the list length reaches k, return it
+                if len(result) == k:
+                    return result
+        
+        #if it wasnt previously returned, return k
+        return result
+
+        #example:
+        # len(buckets) = 7
+        # len(buckets) - 1 = 6
+
+        # range(6, -1, -1)
+        # Generates: 6, 5, 4, 3, 2, 1, 0
