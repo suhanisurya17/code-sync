@@ -1,0 +1,70 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        #data structure: list or a set
+        substring = set()
+
+        #setting a left or beginning of the window
+        left = 0
+
+        #the current max length -> this could most likely change
+        max_length = 0
+        
+        #first step is iterating through the the string
+        for right in range(len(s)):
+
+            #this is what happens if the char alr exists in the substring
+            while s[right] in substring:
+                #advances the window one spot to the right while removing the character at left point
+                substring.remove(s[left])
+                left+= 1
+
+            #if the char is not in substring it gets added
+            substring.add(s[right])
+
+            #comparing to get the max length
+            max_length = max(max_length, right - left + 1)
+
+        return max_length
+
+                
+#tracing code with an example: aabe
+
+# 1st
+# a is not in set so its added
+
+# set = ('a')
+
+# 2nd
+# left = 0
+# a is in the list so a is removed from substring substring[0]
+
+# set = ( )
+#left = 1
+
+#now since a is out of the set, it goes back to the for loop iteration to add back the a
+#set = ('a')
+
+#3rd 
+#set = ('a', 'b')
+
+#4th
+#set = ('a', 'b', 'e')
+
+# now final counts
+# max_length is currently 0, 
+# right - left + 1 is 3 - 1 + 1 = 3
+
+# therefore, 3 is returned
+
+#tricky part is the window shifting, which can be handled with a while loop
+
+#types of test cases
+#mixed: aaerty
+#all the same: aaaaa
+#all different: gjfhs
+#where one char appears in certain spots: aerat
+
+#so the window will look for the unique bit (in case 4)
+
+#aer is the largest window
