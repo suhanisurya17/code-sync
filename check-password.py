@@ -12,10 +12,14 @@ def checkPassword(password):
     #first I must turn the string into an array
     words = []
     words = password.split()
+
+    valid_words = 0
     if len(words) >= 5:
         for word in words:
-            return len(word) >= 3 and word.isalpha():
-                return True
+            if len(word) >= 3 and word.isalpha():
+                valid_words += 1
+
+    return len(words) == valid_words
 
     else:
         has_upper = False
