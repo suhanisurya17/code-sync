@@ -14,17 +14,40 @@ def checkPassword(password):
     words = password.split()
     if len(words) >= 5:
         for word in words:
-            if len(word) >= 3
-        
-    
-    
+            return len(word) >= 3 and word.isalpha():
+                return True
+
+    else:
+        has_upper = False
+        has_lower = False
+        has_number = False
+        has_symbol = False
+        if len(password) >= 12:
+            for char in password:
+                if char.isupper():
+                    has_upper = True
+                if char.islower():
+                    has_lower = True
+                if char.isdigit():
+                    has_number = True
+                symbols = ["!","@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "="]
+                if char in symbols:
+                    has_symbol = True
+
+                return has_upper and has_lower and has_number and has_symbol
+
+
+                    
+                
+            
     #category 2
     #at least 12 char long
     #contains at least one upper case and one lowercase letter
     #contains at least one number
     #contains at least of of the following symbols: !@#$%^&*()_+=
     #no character may be used more than three times in a row
-        
+
+
 def main():
     test_cases = {
         # Category 1: Passphrase
